@@ -32,3 +32,11 @@ async def get_current_user(token : Annotated[str, Depends(oauth2_scheme)]):
     except JWTError:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
                                 detail="Could not validate user.")
+    
+async def get_current_active_user(
+    current_user: Annotated[User, Depends(get_current_user)]
+):
+    if current_user.get('disabled'):
+        raise HTTPException(status_code=400, detail="Inactive user")
+    return current_user
+    

@@ -15,10 +15,9 @@ class ExercisestBase(BaseModel):
     languaje: str
 
 class UserBase(BaseModel):
-    name : str
-    email : str
+    id : int
+
     username : str
-    hashed_password : str
 
 class SolutionBase(BaseModel):
     user_id : int
