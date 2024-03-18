@@ -1,5 +1,6 @@
-from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy import Column, Integer, String, ForeignKey, Float
 from models.database import Base
+from alembic import op
 
 class User(Base):
     __tablename__ = 'users'
@@ -7,6 +8,7 @@ class User(Base):
     name = Column(String(70))
     email = Column(String(50))
     username = Column(String(50), unique=True)
+    level = Column(Float, default=0)
     hashed_password = Column(String(70))
 
 class Exercise(Base):

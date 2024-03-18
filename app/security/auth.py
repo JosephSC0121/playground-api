@@ -14,8 +14,8 @@ def authenticate_user(username: str, password: str, db):
         return False
     return user
 
-def create_access_token(username: str, user_id: int, expires_delta: timedelta):
-    encode = {"sub": username, "id": user_id}
+def create_access_token(username: str, user_id: int, user_level: int, expires_delta: timedelta):
+    encode = {"sub": username, "id": user_id, "level": user_level}
     expires = datetime.now() + expires_delta
     encode.update({"exp": expires})
     return jwt.encode(encode, SECRET_KEY, algorithm=ALGORITHM)
