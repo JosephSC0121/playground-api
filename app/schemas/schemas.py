@@ -1,6 +1,9 @@
 from pydantic import BaseModel
 
 class CreateUserRequest(BaseModel):
+    nombres : str
+    apellidos : str
+    email: str
     username: str
     password: str
 
@@ -16,7 +19,6 @@ class ExercisestBase(BaseModel):
 
 class UserBase(BaseModel):
     id : int
-
     username : str
 
 class SolutionBase(BaseModel):
@@ -25,3 +27,13 @@ class SolutionBase(BaseModel):
     code : str
     date_send : str
     result : str
+
+class User(BaseModel):
+    id : int
+    nombres : str
+    apellidos : str
+    aboutme : str
+    username : str
+    email: str
+    level : float
+    

@@ -5,9 +5,11 @@ from alembic import op
 class User(Base):
     __tablename__ = 'users'
     id = Column(Integer, primary_key=True, index=True)
-    name = Column(String(70))
-    email = Column(String(50))
+    nombres = Column(String(50))
+    apellidos = Column(String(50))
+    aboutme = Column(String(255))
     username = Column(String(50), unique=True)
+    email = Column(String(50), unique=True)
     level = Column(Float, default=0)
     hashed_password = Column(String(70))
 

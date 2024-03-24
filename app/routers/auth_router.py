@@ -17,6 +17,9 @@ router = APIRouter(
 @router.post("/", status_code=status.HTTP_201_CREATED)
 async def create_user(db: db_dependency, create_user_request: CreateUserRequest):
     create_user_model = User(
+        nombres=create_user_request.nombres,
+        apellidos= create_user_request.apellidos,
+        email=create_user_request.email,
         username=create_user_request.username,
         hashed_password = bcrypt_context.hash(create_user_request.password),
     )
