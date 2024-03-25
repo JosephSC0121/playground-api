@@ -7,7 +7,7 @@ class User(Base):
     id = Column(Integer, primary_key=True, index=True)
     nombres = Column(String(50))
     apellidos = Column(String(50))
-    aboutme = Column(String(255))
+    aboutme = Column(String(255), default="Soy nuevo")
     username = Column(String(50), unique=True)
     email = Column(String(50), unique=True)
     level = Column(Float, default=0)
