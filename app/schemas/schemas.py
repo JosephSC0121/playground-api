@@ -11,7 +11,7 @@ class Token(BaseModel):
     access_token: str
     token_type: str
 
-class ExercisestBase(BaseModel):
+class ExercisesBase(BaseModel):
     title : str
     description: str
     dificulty: str
