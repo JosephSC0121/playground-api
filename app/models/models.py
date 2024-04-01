@@ -20,6 +20,7 @@ class Exercise(Base):
     description = Column(String(255))
     dificulty = Column(String(20))
     languaje = Column(String(30))
+    course = Column(String(30))
 
 class Solution(Base):
     __tablename__ = 'solutions'
