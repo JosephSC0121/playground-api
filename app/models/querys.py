@@ -14,3 +14,6 @@ def create_exercise(db: Session, exercise: ExercisesBase):
     db.commit()
     db.refresh(db_exercise)
     return db_exercise
+
+def find_by_subject(db: Session, exercise: str):
+    return db.query(models.Exercise).filter(models.Exercise.course==exercise).all()

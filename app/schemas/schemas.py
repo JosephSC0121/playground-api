@@ -16,6 +16,7 @@ class ExercisesBase(BaseModel):
     description: str
     dificulty: str
     languaje: str
+    course: str
 
 class UserBase(BaseModel):
     id : int

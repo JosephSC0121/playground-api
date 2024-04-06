@@ -22,3 +22,8 @@ def read_exercises(current_user: dict = Depends(get_current_user), db: Session =
 @router.post("/exercises", response_model=schemas.ExercisesBase)
 def create_exercise(exercise: schemas.ExercisesBase, db: Session = Depends(get_db)):
     return querys.create_exercise(db=db, exercise=exercise)
+
+
+@router.get("/exercises/{course}", response_model=List[schemas.ExercisesBase])
+def get_exercises_by_course(course: str, current_user: dict = Depends(get_current_user), db: Session = Depends(get_db)):
+    return querys.find_by_subject(db=db, exercise=course)
