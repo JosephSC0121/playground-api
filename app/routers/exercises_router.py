@@ -27,3 +27,7 @@ def create_exercise(exercise: schemas.ExercisesBase, db: Session = Depends(get_d
 @router.get("/exercises/{course}", response_model=List[schemas.ExercisesBase])
 def get_exercises_by_course(course: str, current_user: dict = Depends(get_current_user), db: Session = Depends(get_db)):
     return querys.find_by_subject(db=db, exercise=course)
+
+@router.get("/exercise/{title}", response_model=schemas.ExercisesBase)
+def get_exercise_by_title(title: str, current_user: dict = Depends(get_current_user), db: Session = Depends(get_db)):
+    return querys.find_by_title(db=db, exercise_title=title)

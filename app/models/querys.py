@@ -1,6 +1,7 @@
 from sqlalchemy.orm import Session
 from . import models
 from schemas.schemas import ExercisesBase
+
 def get_user(db: Session, user_id: int):
     return db.query(models.User).filter(models.User.id == user_id).first()
 
@@ -17,3 +18,6 @@ def create_exercise(db: Session, exercise: ExercisesBase):
 
 def find_by_subject(db: Session, exercise: str):
     return db.query(models.Exercise).filter(models.Exercise.course==exercise).all()
+
+def find_by_title(db: Session, exercise_title: str):
+    return db.query(models.Exercise).filter(models.Exercise.title == exercise_title).first()
