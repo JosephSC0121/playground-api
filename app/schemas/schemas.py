@@ -38,3 +38,5 @@ class User(BaseModel):
     email: str
     level : float
     
+class ChatRequest(BaseModel):
+    question: str

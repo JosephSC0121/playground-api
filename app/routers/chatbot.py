@@ -1,5 +1,7 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException
 from openai import OpenAI
+from schemas.schemas import ChatRequest
+
 router = APIRouter(
     prefix='/chat',
     tags=['chat']
@@ -7,14 +9,24 @@ router = APIRouter(
 
 client = OpenAI()
 
-@router.get("/chat")
-def chat_bot():
-    completion = client.chat.completions.create(
-    model="gpt-3.5-turbo",
-    messages=[
-        {"role": "system", "content": "You are a poetic assistant, skilled in explaining complex programming concepts with creative flair."},
-        {"role": "user", "content": "Compose a poem that explains the concept of recursion in programming."}
-    ]
-    )
 
-    return(completion.choices[0].message)
+
+@router.post("/chat")
+async def chat_bot(request: ChatRequest):
+    try:
+        completion = client.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "system", "content": "Eres un profesor de programación que ayuda a dar consejos de programación y pistas pero no das la solución"},
+                {"role": "user", "content": request.question}
+            ]
+        )
+        response_content = completion.choices[0].message
+        return {"response": response_content}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+'''''
+@router.post("/chat")
+async def chat_bot():
+    return {"response": "hola"}
+'''''
