@@ -1,9 +1,15 @@
 from fastapi import FastAPI
+from fastapi.responses import HTMLResponse
 import uvicorn
 from routers import auth_router, user_router, exercises_router, chatbot
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+@app.get("/helloworld", response_class=HTMLResponse)
+def health_checker():
+    return "<p> Hola mundo!! </p>"
+
 
 origins = [
     "http://localhost:5173",
@@ -23,5 +29,5 @@ app.include_router(exercises_router.router)
 app.include_router(chatbot.router)
 
 if __name__ == "__main__":
-    uvicorn.run('main:app', host="localhost", port=80, reload=True)
+    uvicorn.run('main:app', host="localhost", port=8080, reload=True)
 
