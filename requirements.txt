@@ -11,3 +11,4 @@ crypto
 python-dotenv
 alembic
 python-multipart
+cryptography
