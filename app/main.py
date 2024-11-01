@@ -14,7 +14,7 @@ def health_checker():
 origins = [
     "http://127.0.0.1:5173",
     "http://localhost:5173",
-    'http://37.27.11.226:5173'
+    'http://37.27.11.226:5173',
     'https://demo-playground.josephsilvacasas.com/'
 ]
 
